@@ -27,10 +27,7 @@ export const ZoomSDKStyle = styled.div<StyleProps>`
 
   #meetingSDK {
     top: 59px !important;
-    left: 0 !important;
-    right: 0;
-    margin-left: auto;
-    margin-right: auto;
-    width: 244px; /* width of speaker and ribbon view */
+    width: auto;
+    justify-content: center;
   }
 `

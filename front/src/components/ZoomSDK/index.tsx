@@ -3,13 +3,11 @@ import { useSearchParams } from 'react-router-dom'
 
 import { Text } from 'components/Text'
 import { ZoomContext } from 'context/ZoomContext'
-import { useWindowSize } from 'hooks/useWindowSize'
 
 import { ZoomSDKStyle } from './styles'
 
 export const ZoomSDK: React.FC = () => {
   const { client, logUser } = useContext(ZoomContext)
-  const { width } = useWindowSize()
   const [searchParams] = useSearchParams()
   const queryCode = searchParams.get('code')
 
@@ -18,7 +16,6 @@ export const ZoomSDK: React.FC = () => {
       logUser(queryCode)
 
       const meetingSDK = document.getElementById('meetingSDK')
-      const meetingSDKChat = document.getElementById('meetingSDKChat')
       client.init({
         zoomAppRoot: meetingSDK,
         language: 'en-US',
@@ -30,8 +27,8 @@ export const ZoomSDK: React.FC = () => {
             },
             viewSizes: {
               default: {
-                width: width * 0.5,
-                height: width * 0.5 * 0.6,
+                width: window.innerWidth * 0.5,
+                height: window.innerWidth * 0.5 * 0.6,
               },
               ribbon: {
                 width: 300,
@@ -61,13 +58,6 @@ export const ZoomSDK: React.FC = () => {
             //   ],
             // },
           },
-          chat: {
-            popper: {
-              disableDraggable: true,
-              anchorElement: meetingSDKChat,
-              placement: 'top',
-            },
-          },
         },
       })
     }
@@ -79,10 +69,6 @@ export const ZoomSDK: React.FC = () => {
       <div className="column">
         <Text textAlign="center">Videos Here</Text>
         <div id="meetingSDK"></div>
-      </div>
-      <div className="column">
-        <Text textAlign="center">Chat Here</Text>
-        <div id="meetingSDKChat"></div>
       </div>
     </ZoomSDKStyle>
   )
