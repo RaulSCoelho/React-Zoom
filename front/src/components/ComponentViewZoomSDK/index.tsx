@@ -4,9 +4,9 @@ import { useSearchParams } from 'react-router-dom'
 import { Text } from 'components/Text'
 import { ZoomContext } from 'context/ZoomContext'
 
-import { ZoomSDKStyle } from './styles'
+import { ComponentViewZoomSDKStyle } from './styles'
 
-export const ZoomSDK: React.FC = () => {
+export const ComponentViewZoomSDK: React.FC = () => {
   const { client, logUser } = useContext(ZoomContext)
   const [searchParams] = useSearchParams()
   const queryCode = searchParams.get('code')
@@ -35,28 +35,6 @@ export const ZoomSDK: React.FC = () => {
                 height: 700,
               },
             },
-            // meetingInfo: [
-            //   'topic',
-            //   'host',
-            //   'mn',
-            //   'pwd',
-            //   'telPwd',
-            //   'invite',
-            //   'participant',
-            //   'dc',
-            //   'enctype',
-            // ],
-            // toolbar: {
-            //   buttons: [
-            //     {
-            //       text: 'Custom Button',
-            //       className: 'CustomButton',
-            //       onClick: () => {
-            //         console.log('custom button')
-            //       },
-            //     },
-            //   ],
-            // },
           },
         },
       })
@@ -65,11 +43,11 @@ export const ZoomSDK: React.FC = () => {
   }, [queryCode])
 
   return (
-    <ZoomSDKStyle>
-      <div className="column">
-        <Text textAlign="center">Videos Here</Text>
+    <ComponentViewZoomSDKStyle>
+      <div className="meetingSDKContainer">
+        <Text textAlign="center">Video</Text>
         <div id="meetingSDK"></div>
       </div>
-    </ZoomSDKStyle>
+    </ComponentViewZoomSDKStyle>
   )
 }
