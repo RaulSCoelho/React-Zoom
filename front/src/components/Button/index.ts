@@ -19,7 +19,7 @@ export const Button = styled.button<StyleProps>`
   width: ${props => props.width};
   height: ${props => props.height || '32px'};
   border: ${props => props.border || 'none'};
-  border-radius: ${props => props.borderRadius || '20px'};
+  border-radius: ${props => props.borderRadius || '18px'};
 
   &:hover {
     background-color: ${props => shade(0.2, props.backgroundColor || '#fff')};
